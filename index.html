@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON Sandbox</title>
+</head>
+<body>
+    <ul id = "people"></ul>
+    <script>
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let response = JSON.parse(xhttp.responseText);
+                //console.log(response.people);
+                
+
+                let people = response.people;
+                let output = '';
+                for(let i = 0; i < people.length; i++) {
+                    output += '<li>' + people[i].name + " " + people[i].age + '</li>';
+                }
+                document.getElementById('people').innerHTML = output;
+            }
+        };
+        xhttp.open("GET", "people.json", true);
+        xhttp.send();
+
+        /*
+        // First part of tutorial
+
+        let person = {
+            name: "Brad",
+            age: 35,
+            address: {
+                street: "5 main st",
+                city: "Boston"
+            },
+            children: ["Brianna", "Nicholas"]
+        }
+
+        //person = JSON.stringify(person);  //modifies the array into correct JSON array
+        //console.log(person);
+        //console.log(person.name);   // Will give undefined
+        //person = JSON.parse(person);  //changes back to JS array
+
+        console.log(person.address.street);
+        console.log(person.children[0]);
+        console.log();
+        let people = [
+            {
+                name: "Brad",
+                age: 35
+            },
+            {
+                name: "John",
+                age: 40
+            },
+            {
+                name: "Sara",
+                age: 25
+            }
+        ];
+
+        //console.log(people[1].age);
+        let output = '';
+        for(let i = 0; i < people.length; i++) {
+            //console.log(people[i].name + " " + people[i].age);
+            output += '<li>' + people[i].name + " " + people[i].age + '</li>';
+        }
+        document.getElementById('people').innerHTML = output;
+        */
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+
+{
+    "name": "Brad Traversy",
+    "age": 30,
+    "address": {
+        "street": "5 main st",
+        "city": "Boston"
+    },
+    "children":["Brianna", "Nicholas"]
+    
+}
